@@ -16,7 +16,7 @@ export class UsersService {
 
   getClaimByUserID(UserData): Observable<any>{
     let empid = sessionStorage.getItem('employeeId')
-    return this.http.post(`https://localhost:44382/GetClaimsById?employeeId=${empid}`, {UserData});
+    return this.http.post(`${environment.apiUrl2}/GetClaimsById?employeeId=${empid}`, {UserData});
   }
 
   getSpecificUser(): Observable<any> {
