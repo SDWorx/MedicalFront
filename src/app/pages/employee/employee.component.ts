@@ -134,6 +134,7 @@ export class EmployeeComponent implements OnInit {
       const first_name = this.claimForm.value.first_name;
       const last_name = this.claimForm.value.last_name;
       const noClaims = this.claimForm.value.number_of_claims;
+      
 
       sessionStorage.setItem('employeeId', id)
 
