@@ -49,6 +49,7 @@ import { DialogGenerateReportDialogComponent } from './pages/viewclaim/dialog-ge
     HrComponent,
     HeaderComponent,
     DialogGenerateReportDialogComponent,
+
   ],
   imports: [
     BrowserModule,
