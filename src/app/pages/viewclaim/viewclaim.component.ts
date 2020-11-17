@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { saveAs } from 'file-saver';
 import { Router } from '@angular/router';
+
 export interface UserData {
   emp_id: string;
   emp_name: string;
@@ -31,6 +32,7 @@ export class ViewclaimComponent implements OnInit {
   error = false;
   checked = false;
   Alldata: Array<UserData>;
+  lstemps: UserData[];
   @ViewChild('TABLE') table: ElementRef;
 
   public range = { start: null, end: null };
@@ -109,32 +111,60 @@ export class ViewclaimComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
   ngOnInit() {
-    this.usersService.getUsers().subscribe(
+    // this.usersService.getUsers().subscribe(
+    //   (data: Array<UserData>) => {
+    //     this.Alldata = data;
+
+    //     //this._loading=false;
+    //     //this.data = res;
+    //     this.allSubmissions = data;
+    //     this.dataSource = new MatTableDataSource(
+    //       data.map((d) => {
+    //         return {
+    //           ...d,
+    //           batch_date_to: d.batch_date_to
+    //             ? this.ChangeViewDateFormat(new Date(d.batch_date_to))
+    //             : 'pending',
+    //         };
+    //       })
+    //     );
+    //     console.log(data);
+
+    //     //this.source = new LocalDataSource(this.data);
+    //     // setTimeout(() => {this._loading=false},2000)
+    //     this.dataSource.paginator = this.paginator;
+    //     this.dataSource.sort = this.sort;
+    //   },
+    //   (err) => console.log(err)
+    // );
+    this.usersService.getClaimByUserID(this.lstemps).subscribe(
+
       (data: Array<UserData>) => {
-        this.Alldata = data;
-
-        //this._loading=false;
-        //this.data = res;
-        this.allSubmissions = data;
-        this.dataSource = new MatTableDataSource(
-          data.map((d) => {
-            return {
-              ...d,
-              batch_date_to: d.batch_date_to
-                ? this.ChangeViewDateFormat(new Date(d.batch_date_to))
-                : 'pending',
-            };
-          })
+            this.Alldata = data;
+    
+            //this._loading=false;
+            //this.data = res;
+            this.allSubmissions = data;
+            this.dataSource = new MatTableDataSource(
+              data.map((d) => {
+                return {
+                  ...d,
+                  batch_date_to: d.batch_date_to
+                    ? this.ChangeViewDateFormat(new Date(d.batch_date_to))
+                    : 'pending',
+                };
+              })
+            );
+            console.log(data);
+    
+            //this.source = new LocalDataSource(this.data);
+            // setTimeout(() => {this._loading=false},2000)
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          },
+          (err) => console.log(err)
         );
-        console.log(data);
 
-        //this.source = new LocalDataSource(this.data);
-        // setTimeout(() => {this._loading=false},2000)
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      (err) => console.log(err)
-    );
   }
   goback() {
     this.router.navigate(['/hr']);
