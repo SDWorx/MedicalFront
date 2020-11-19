@@ -39,6 +39,7 @@ import { HeaderComponent } from './nav/header/header.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DialogGenerateReportDialogComponent } from './pages/viewclaim/dialog-generate-report-dialog/dialog-generate-report-dialog.component';
+import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { DialogGenerateReportDialogComponent } from './pages/viewclaim/dialog-ge
     HrComponent,
     HeaderComponent,
     DialogGenerateReportDialogComponent,
+    ViewstatusComponent,
   ],
   imports: [
     BrowserModule,

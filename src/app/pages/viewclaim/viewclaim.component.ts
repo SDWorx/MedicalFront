@@ -111,6 +111,7 @@ export class ViewclaimComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
   ngOnInit() {
+    
     this.usersService.getClaimByUserID(this.lstemps).subscribe(
 
       (data: Array<UserData>) => {
