@@ -41,7 +41,7 @@ export class MessengerComponent implements OnInit {
     this.MessengerService.Count().subscribe((data) => {
       count = data;
       this.messengerForm.setValue({"claims":count,"received":count})
-   
+
     });
   }
   employee() {

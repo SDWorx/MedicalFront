@@ -34,8 +34,12 @@ const routes: Routes = [
     path: 'ipconfig/add/:id',
     component: EditComponent
     },
-  {   
-  path: 'ipconfig/edit/:id', 
+  {
+  path: 'ipconfig/edit/:id',
+  component: EditComponent
+},
+{
+  path: 'ipconfig/edit/:id/:ipAddress',
   component: EditComponent
 },
 ];

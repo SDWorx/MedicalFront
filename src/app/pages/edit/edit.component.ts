@@ -7,50 +7,47 @@ import { IpconfigService } from 'src/app/services/ipconfig.service';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  id:number;
-  header:string;
-  ipconfig: IpConfig = {
+  id: number;
+  ipAddress: string;
+  header: string;
+  ipconfig: IpConfig;
 
-    id:0,
-    name:'',
-    phone:0,
-    email:''
-
-  };
-
-  constructor(private router: Router, private route: ActivatedRoute, private ipconfigservice:IpconfigService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private ipconfigservice: IpconfigService
+  ) {}
 
   ngOnInit(): void {
-    this.id= +this.route.snapshot.paramMap.get('id');
-    this.header =this.id === 0? 'Add IP Address':'Edit IP Address';
-  
-  if (this.id != 0){
-    this.ipconfig= this.ipconfigservice.onGetIpConfig(this.id);
+    this.id = +this.route.snapshot.paramMap.get('id');
+
+    this.header = this.id === 0 ? 'Add IP Address' : 'Edit IP Address';
+
+    if (this.id != 0) {
+      // this.id= +this.route.snapshot.paramMap.get('ipAddress');
+      this.ipAddress = this.route.snapshot.paramMap.get('ipAddress');
+    }
   }
 
-  }
-
-  onSubmit(form: NgForm){
+  onSubmit() {
     let ipconfig: IpConfig = {
-    id: form.value.id,
-    name: form.value.name,
-    email: form.value.email,
-    phone: form.value.phone,
+      id: this.id,
+      ipAddress: this.ipAddress,
+    };
 
+    if (this.id === 0) {
+      this.ipconfigservice
+        .addRegisteredDevice(ipconfig)
+        .subscribe((data) => {});
+    } else {
+      this.ipconfigservice
+        .updateRegisteredDevice(ipconfig)
+        .subscribe((data) => {});
     }
 
-
-    if(this.id === 0){
-    this.ipconfigservice.onAdd(ipconfig);
-    }
-    else{
-      this.ipconfigservice.onUpdate(ipconfig);
-    }
-
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('config');
   }
-
 }
