@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { saveAs } from 'file-saver';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users/users.service';
 
 export interface StatusData {
   date: string;
@@ -19,6 +20,15 @@ export interface StatusData {
   collectedEnv: string;
   status: string;
 
+}
+
+export interface Claim {
+  batch_id: number;
+  claim_id: string;
+  emp_id: string;
+  emp_name: string;
+  number_of_claims:string;
+  date_submit: string;
 }
 
 @Component({
@@ -36,15 +46,18 @@ export class ViewstatusComponent implements OnInit {
   public range = { start: null, end: null };
 
   _loading = true;
-  
+
   displayedStatusColumns: string[] = [
     'date',
     'batch_id',
     'submittedEnv',
     'collectedEnv',
     'status',
-
+    'viewClaims'
   ];
+  displayedColumns: string[] = ['claim_id', "emp_name", "number_of_claims","date_submit"];
+  dataSource: MatTableDataSource <Claim> ;
+  batch_id: number;
 
   // FILTERS
 
@@ -55,10 +68,10 @@ export class ViewstatusComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private statusService: StatusService, private router: Router ) {}
+  constructor(private statusService: StatusService,private usersService: UsersService ,private router: Router ) {}
 
 
-  
+
   ngOnInit() {
     this.statusService.getStatus().subscribe(
       (dataStatus: Array<StatusData>) => {
@@ -69,7 +82,7 @@ export class ViewstatusComponent implements OnInit {
           dataStatus.map((d) => {
             return {
               ...d,
-              
+
             };
           })
         );
@@ -91,8 +104,8 @@ export class ViewstatusComponent implements OnInit {
     this.router.navigate(['/messenger']);
   }
 
-  
-  
+
+
   ChangeViewDateFormat(d: Date): any {
     const d2: Date = new Date(d);
     const dd = String(d2.getDate()).padStart(2, '0');
@@ -102,6 +115,14 @@ export class ViewstatusComponent implements OnInit {
     return dd + '-' + mm + '-' + yyyy;
   }
 
-  
+  modalDetails(batch_id : number){
+    this.usersService.getUsers().subscribe((stream : Array<Claim>) =>{
+      stream = stream.filter(x=> x.batch_id === batch_id && x.date_submit );
+      console.table(stream)
+      this.dataSource = new MatTableDataSource(stream);
+    });
+  }
+
+
 
 }

@@ -16,7 +16,7 @@ div.main {
     padding: 0;
     -webkit-appearance: none;
   }
-  
+
   #emp form {
     width: 90%;
   }
@@ -34,11 +34,11 @@ div.main {
     line-height: 125px;
     width: 300px;
   }
-  
+
   #emp form input {
     height: 50px;
   }
-  
+
   #emp form input[type="text"],
   input[type="password"] {
     background-color: #000;
@@ -48,11 +48,11 @@ div.main {
     padding: 0 16px;
     width: 100%;
   }
-  
+
   .error-block {
     color: red;
   }
-  
+
   .reasonOverflow {
     white-space: nowrap !important;
     overflow: auto !important;
@@ -65,26 +65,26 @@ div.main {
   ::-webkit-scrollbar-thumb:hover {
     background: #ff8787;
   }
-  
+
   ::-webkit-scrollbar {
     width: 1px !important;
   }
-  
+
   .mat-elevation-z8{
     margin-left: 55px;
     width: 91%;
     justify-content: center;
   }
-  
-  table { 
+
+  table {
     width: 100%;
   }
-  
+
   .mat-form-field {
     font-size: 14px;
     width: 100%;
   }
-  
+
   td,
   th {
     width: 15%;
@@ -101,4 +101,17 @@ div.main {
     text-indent: 8px;
     color: #656565;
   }
-  
+
+  .button {
+    background-color: rgb(2, 2, 19);
+    border: none;
+    color: white;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
