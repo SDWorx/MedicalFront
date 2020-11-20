@@ -40,7 +40,7 @@ export class MessengerComponent implements OnInit {
     //   }
     // );
 
-    
+
     this.details.collected = this.messengerForm.get('received').value;
 
     this.MessengerService.addSummary(this.details.batchID, this.details.claimed, this.details.collected, this.details.status).subscribe(
@@ -54,18 +54,18 @@ export class MessengerComponent implements OnInit {
         });
       }
     );
-    
+
   }
   ngOnInit(): void {
     var count;
-    
+
     this.MessengerService.Count().subscribe((data) => {
       count = data;
       this.messengerForm.setValue({"claims":data[0],"received":data[0]})
 
       this.details.claimed = data[0];
       this.details.batchID = data[1];
-     
+
     });
   }
   employee() {
