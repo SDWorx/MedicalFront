@@ -27,12 +27,12 @@ export class MessengerService {
   addSummary(batchID: any, claimed: any, collected: any, status: string) : Observable <any>{
     const body ={
       batch_id: batchID,
-      envelopes_submitted: claimed,
-      collected_envelopes: collected,
-      date_submitted: formatDate(new Date(), 'yyyy/MM/dd', 'en'),
+      submittedEnv: claimed,
+      collectedEnv: collected,
+      date: formatDate(new Date(), 'yyyy/MM/dd', 'en'),
       status: status
     }
-
-    return this.http.post(`${environment.apiUrl}/batchDetails`, body);
+    
+    return this.http.post(`${environment.apiUrl}/BatchClaimed`, body);
   }
 }
