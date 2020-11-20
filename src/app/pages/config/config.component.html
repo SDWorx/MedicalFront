@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <h2>List of IP Address</h2>
+    <a [routerLink]="['/ipconfig/add/0']" class="btn btn-primary mt-5 mb-3">Add IP Address</a>
+    <table class="table">
+        <thead>
+            <th>Id</th>
+            <th>IP Address</th>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let ipconfig of ipconfiguration">
+                <td>{{ ipconfig.id }}</td>
+                <td>{{ipconfig.ipAddress}}</td>
+
+                <td><a [routerLink]="['/ipconfig/edit',ipconfig.id,ipconfig.ipAddress]"><mat-icon>edit</mat-icon></a></td>
+                <td><button (click)="onDelete(ipconfig.id)"><mat-icon>delete</mat-icon></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

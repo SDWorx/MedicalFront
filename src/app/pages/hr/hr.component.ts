@@ -19,6 +19,9 @@ export class HrComponent implements OnInit {
   viewClaims() {
     this.router.navigate(['/view']);
   }
+  Config() {
+    this.router.navigate(['/config']);
+  }
   goMessenger() {
     if (this.LoginForm.value.pin == "1234") {
       this.router.navigate(['/messenger']);
