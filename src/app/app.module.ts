@@ -26,8 +26,7 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatDialogModule } from '@angular/material/dialog';
 import {ConfigComponent} from './pages/config/config.component'
-
-
+import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
 import {
   ModalModule,
   TooltipModule,
@@ -35,7 +34,7 @@ import {
   ButtonsModule,
 } from 'angular-bootstrap-md';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './nav/header/header.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -43,6 +42,12 @@ import { DialogGenerateReportDialogComponent } from './pages/viewclaim/dialog-ge
 import { EditComponent } from './pages/edit/edit.component';
 //import { Config1 } from './pages/config1/config1.component.ts/config1.component.ts.component';
 //import { Config2Component } from './pages/config2/config2/config2.component';
+
+
+export const protectedResourceMap: [string, string[]][] = [
+  ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +62,35 @@ import { EditComponent } from './pages/edit/edit.component';
     EditComponent
    
   ],
-  imports: [
+  imports: [MsalModule.forRoot(
+    {
+      auth: {
+        // This is your client ID
+        clientId: 'd471db94-db21-4103-aefa-679cd7435745', 
+        // The GUID is your Directory (or tenant) ID
+        authority: 'https://login.microsoftonline.com/d26c9159-7165-4322-bf28-6c98626e9619', 
+        // This is your redirect URI
+        redirectUri: 'http://localhost:4200',  
+        postLogoutRedirectUri: "http://localhost:4200",
+        navigateToLoginRequestUrl: true,
+      },
+      cache: {
+        cacheLocation: 'localStorage',
+        storeAuthStateInCookie: false, // Set to true for Internet Explorer 11
+      },
+    },
+    {
+      popUp: false,
+      consentScopes: [
+        "user.read",
+        "openid",
+        "profile",
+      ],
+      unprotectedResources: ["https://www.microsoft.com/en-us/"],
+      protectedResourceMap,
+      extraQueryParameters: {}
+    }
+  ),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

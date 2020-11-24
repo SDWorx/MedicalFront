@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth/auth.service';
 import { StorageService } from './services/auth/storage/storage.service';
+import { AzureAuthService } from './services/azure/azure-auth.service';	
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,18 +19,27 @@ export class AppComponent implements OnInit {
     location: Location,
     private router: Router,
     private authService: AuthService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private azure: AzureAuthService
   ) {
-    router.events.subscribe((val) => {
-      this.show = location.path() != '' ? true : false;
-    });
+    // router.events.subscribe((val) => {
+    //   this.show = location.path() != '' ? true : false;
+    // });
+
   }
 
   ngOnInit(): void {
     // Redirect user if cookie is valid
-    if (this.authService.isAuthenticated() && window.location.pathname == '/') {
-      const role = this.storageService.getCookie('role');
-      this.router.navigate(['/']);
-    }
+    // if (this.authService.isAuthenticated() && window.location.pathname == '/') {
+    //   const role = this.storageService.getCookie('role');
+    //   this.router.navigate(['/']);
+    // }
+    this.azure.initializeAuth();
+  }
+  login() {	   
+     this.azure.logIn();	  
+  }	
+  logOut() {	   
+    this.azure.logOut();	  
   }
 }

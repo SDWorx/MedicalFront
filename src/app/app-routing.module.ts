@@ -9,9 +9,15 @@ import { AuthGuardGuard } from './services/auth/auth-guard.guard';
 import { AuthGuard } from './services/auth/auth.guard';
 import {ConfigComponent} from './pages/config/config.component'
 import { EditComponent } from './pages/edit/edit.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  // { path: '', component: LoginComponent },
+  {
+    path: '',
+    pathMatch: 'prefix', 
+    component: HomeComponent,  
+  },
   {
     path: 'claimForm',
     component: EmployeeComponent,
