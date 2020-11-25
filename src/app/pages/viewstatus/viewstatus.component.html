@@ -142,7 +142,8 @@
                   View Claims
                 </th>
                 <td mat-cell *matCellDef="let row">
-                  <button class="nav-link"
+                  <button mat-raised-button
+                  class="text-primary"
                   data-toggle="modal"
                   data-target="#basicExample"
                   (click)="modalDetails(row.batch_id);frame.show()"

@@ -101,17 +101,3 @@ div.main {
     text-indent: 8px;
     color: #656565;
   }
-
-  .button {
-    background-color: rgb(2, 2, 19);
-    border: none;
-    color: white;
-    padding: 7px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
