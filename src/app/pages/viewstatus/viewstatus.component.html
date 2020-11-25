@@ -1,0 +1,172 @@
+<div class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12" style="margin-top: 2%;">
+          <h2
+            style="color: rgb(37, 33, 33); text-align: center; font-weight: 500;"
+          >
+            Status Log
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+
+          <!-- <div class="row" style="text-align: center;">-->
+
+          <br />
+
+      <div
+        mdbModal
+        #frame="mdbModal"
+        class="modal fade"
+        id="frameModalTop"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+      <div class="modal-dialog modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+          <!--Header-->
+          <div class="modal-header d-flex justify-content-center">
+            <p class="heading">Batch Details</p>
+
+          </div>
+
+          <!--Body-->
+          <div class="modal-body">
+            <mat-table [dataSource]="dataSource" matSort>
+
+              <ng-container matColumnDef="claim_id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Claim ID </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.claim_id}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="emp_name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Employee Name </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.emp_name}} </mat-cell>
+              </ng-container>
+
+
+              <ng-container matColumnDef="number_of_claims">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Number of Claims </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.number_of_claims}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="date_submit">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Date Submitted </mat-header-cell>
+                <mat-cell *matCellDef="let row" > {{ ChangeViewDateFormat(row.date_submit) }} </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;">
+              </mat-row>
+            </mat-table>
+          </div>
+
+          <!--Footer-->
+          <div class="modal-footer justify-content-center">
+            <a
+              type="button"
+              mdbBtn
+              color="danger"
+              outline="true"
+              class="waves-light"
+              mdbWavesEffect
+              data-dismiss="modal"
+              (click)="frame.hide()"
+              >Close</a
+            >
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+          <div class="mat-elevation-z8">
+            <table
+              mat-table
+              [dataSource]="dataSourceStatus"
+              matSort
+            matSortActive="batch_id"
+            matSortDirection="desc"
+            >
+              <br />
+              <!-- ID Column -->
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Date
+                </th>
+                <td mat-cell *matCellDef="let row"> {{ ChangeViewDateFormat(row.date) }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="batch_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Batch ID
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.batch_id }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="submittedEnv">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  No of Env Submitted
+                </th>
+                <td mat-cell *matCellDef="let row">{{ row.submittedEnv }}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="collectedEnv">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  No of Env Collected
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.collectedEnv }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Status
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.status }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="viewClaims">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  View Claims
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <button mat-raised-button
+                  class="text-primary"
+                  data-toggle="modal"
+                  data-target="#basicExample"
+                  (click)="modalDetails(row.batch_id);frame.show()"
+                  >
+                  View
+                </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedStatusColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedStatusColumns"></tr>
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">
+                  No data matching the filter
+                </td>
+              </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+

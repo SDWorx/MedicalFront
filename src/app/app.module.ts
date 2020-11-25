@@ -43,6 +43,7 @@ import { DialogGenerateReportDialogComponent } from './pages/viewclaim/dialog-ge
 import { EditComponent } from './pages/edit/edit.component';
 //import { Config1 } from './pages/config1/config1.component.ts/config1.component.ts.component';
 //import { Config2Component } from './pages/config2/config2/config2.component';
+import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,8 +55,8 @@ import { EditComponent } from './pages/edit/edit.component';
     HeaderComponent,
     DialogGenerateReportDialogComponent,
     ConfigComponent,
-    EditComponent
-   
+    EditComponent,
+    ViewstatusComponent,
   ],
   imports: [
     BrowserModule,

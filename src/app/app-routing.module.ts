@@ -10,6 +10,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import {ConfigComponent} from './pages/config/config.component'
 import { EditComponent } from './pages/edit/edit.component';
 
+import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path: 'viewClaim',
     component: ViewclaimComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'viewstatus',
+    component: ViewstatusComponent,
     canActivate: [AuthGuard],
   },
   {
