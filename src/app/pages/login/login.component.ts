@@ -40,7 +40,15 @@ export class LoginComponent implements OnInit {
         this.storageService.createCookie('id', data['id'], 1);
         this.storageService.createCookie('token', data['token'], 1);
         this._loading = false;
-        this.router.navigate(['/claimForm']);
+
+        /////// Admin
+        this.authenticateUser("admin");
+
+        ////// Normal employee
+        //this.authenticateUser("employee");
+
+        ////// Messenger
+        //this.authenticateUser("messenger");
         
       },
       (err) => {
@@ -49,5 +57,18 @@ export class LoginComponent implements OnInit {
         Swal.fire('Oops...', 'You have entered a wrong pin!', 'error');
       }
     );
+  }
+
+  authenticateUser(userName){
+    sessionStorage.setItem("user", userName);
+    if(userName == "admin"){
+      this.router.navigate(['/viewClaim']);
+    }
+    else if(userName == "employee"){ 
+      this.router.navigate(['/claimForm']);
+    }
+    else if(userName == "messenger"){ 
+      this.router.navigate(['/messenger']);
+    }
   }
 }

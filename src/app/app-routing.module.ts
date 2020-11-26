@@ -17,21 +17,33 @@ const routes: Routes = [
     path: 'claimForm',
     component: EmployeeComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedUser: 'employee'
+    } 
   },
   {
     path: 'viewClaim',
     component: ViewclaimComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedAdmin: 'admin'
+    } 
   },
   {
     path: 'viewstatus',
     component: ViewstatusComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedAdmin: 'admin'
+    } 
   },
   {
     path: 'messenger',
     component: MessengerComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedMessenger: 'messenger'
+    } 
   },
   // { path: 'hr', component: HrComponent, canActivate: [AuthGuard] },
   { path: 'hr', component: HrComponent, canActivate: [AuthGuard] },
