@@ -46,9 +46,6 @@ export class LoginComponent implements OnInit {
 
         ////// Normal employee
         //this.authenticateUser("employee");
-
-        ////// Messenger
-        //this.authenticateUser("messenger");
         
       },
       (err) => {
@@ -66,9 +63,6 @@ export class LoginComponent implements OnInit {
     }
     else if(userName == "employee"){ 
       this.router.navigate(['/claimForm']);
-    }
-    else if(userName == "messenger"){ 
-      this.router.navigate(['/messenger']);
     }
   }
 }

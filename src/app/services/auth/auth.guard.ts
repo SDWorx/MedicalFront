@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
 
     const expectedAdmin = next.data.expectedAdmin;
     const employee = next.data.expectedUser;
-    const msg = next.data.expectedMessenger;
     const valid = this.authService.isAuthenticated();
     const user = sessionStorage.getItem('user');
     
@@ -29,11 +28,10 @@ export class AuthGuard implements CanActivate {
     if (valid && (employee == user)) {
       return true;
     }
-    if (valid && (msg == user)) {
-      return true;
-    }
     else {
       Swal.fire('Warning', 'Access Denied!', 'error');
+      sessionStorage.clear();
+      this.authService.logout();
       this.router.navigate(['']);
       return false;
     }
