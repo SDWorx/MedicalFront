@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { IpConfig } from 'src/app/models/ipconfig.model';
+
 import { IpconfigService } from 'src/app/services/ipconfig.service';
 
 @Component({

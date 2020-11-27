@@ -40,10 +40,13 @@ import { HeaderComponent } from './nav/header/header.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DialogGenerateReportDialogComponent } from './pages/viewclaim/dialog-generate-report-dialog/dialog-generate-report-dialog.component';
+
+import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
+
 import { EditComponent } from './pages/edit/edit.component';
 //import { Config1 } from './pages/config1/config1.component.ts/config1.component.ts.component';
 //import { Config2Component } from './pages/config2/config2/config2.component';
-import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,9 +57,12 @@ import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
     HrComponent,
     HeaderComponent,
     DialogGenerateReportDialogComponent,
-    ConfigComponent,
-    EditComponent,
+
     ViewstatusComponent,
+
+    ConfigComponent,
+    EditComponent
+
   ],
   imports: [
     BrowserModule,
