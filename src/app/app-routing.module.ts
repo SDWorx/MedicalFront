@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
@@ -7,7 +7,12 @@ import { MessengerComponent } from './pages/messenger/messenger.component';
 import { HrComponent } from './pages/hr/hr.component';
 import { AuthGuardGuard } from './services/auth/auth-guard.guard';
 import { AuthGuard } from './services/auth/auth.guard';
+
 import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
+
+import {ConfigComponent} from './pages/config/config.component'
+import { EditComponent } from './pages/edit/edit.component';
+
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -32,6 +37,19 @@ const routes: Routes = [
   },
   // { path: 'hr', component: HrComponent, canActivate: [AuthGuard] },
   { path: 'hr', component: HrComponent, canActivate: [AuthGuard] },
+  { path: 'config', component: ConfigComponent},
+  {
+    path: 'ipconfig/add/:id',
+    component: EditComponent
+    },
+  {
+  path: 'ipconfig/edit/:id',
+  component: EditComponent
+},
+{
+  path: 'ipconfig/edit/:id/:ipAddress',
+  component: EditComponent
+},
 ];
 
 @NgModule({
