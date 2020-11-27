@@ -7,6 +7,9 @@ import { MessengerComponent } from './pages/messenger/messenger.component';
 import { HrComponent } from './pages/hr/hr.component';
 import { AuthGuardGuard } from './services/auth/auth-guard.guard';
 import { AuthGuard } from './services/auth/auth.guard';
+
+import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
+
 import {ConfigComponent} from './pages/config/config.component'
 import { EditComponent } from './pages/edit/edit.component';
 
@@ -20,6 +23,11 @@ const routes: Routes = [
   {
     path: 'viewClaim',
     component: ViewclaimComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'viewstatus',
+    component: ViewstatusComponent,
     canActivate: [AuthGuard],
   },
   {
