@@ -62,6 +62,7 @@
             >View Claim</a
           >
         </li>
+
         <li class="nav-item">
           <a
             class="nav-link"
@@ -72,6 +73,14 @@
           >
             Messenger
           </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['viewstatus']"
+            [routerLinkActive]="['active']"
+            >View Status</a
+          >
         </li>
         <li>
           <a class="nav-link" (click)="logout()">Logout </a>
