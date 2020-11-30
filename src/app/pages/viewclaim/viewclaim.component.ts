@@ -111,6 +111,13 @@ export class ViewclaimComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
   ngOnInit() {
+    const firstTimeClaim = localStorage.getItem('key')
+    if(!firstTimeClaim){
+     localStorage.setItem('key','loaded')
+     location.reload()
+    }else {
+      localStorage.removeItem('key') 
+    }
     this.usersService.getClaimByUserID(this.lstemps).subscribe(
 
       (data: Array<UserData>) => {

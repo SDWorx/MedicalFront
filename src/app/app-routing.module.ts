@@ -9,6 +9,9 @@ import { MessengerComponent } from './pages/messenger/messenger.component';
 import { HrComponent } from './pages/hr/hr.component';
 import { AuthGuardGuard } from './services/auth/auth-guard.guard';
 import { AuthGuard } from './services/auth/auth.guard';
+
+import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
+
 import {ConfigComponent} from './pages/config/config.component'
 import { EditComponent } from './pages/edit/edit.component';
 
@@ -18,31 +21,63 @@ const routes: Routes = [
     path: 'claimForm',
     component: EmployeeComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedUser: 'employee'
+    } 
   },
   {
     path: 'viewClaim',
     component: ViewclaimComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedAdmin: 'admin'
+    } 
+  },
+  {
+    path: 'viewstatus',
+    component: ViewstatusComponent,
+    canActivate: [AuthGuard],
+    data: { 
+      expectedAdmin: 'admin'
+    } 
   },
   {
     path: 'messenger',
     component: MessengerComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedAdmin: 'admin'
+    }  
   },
   // { path: 'hr', component: HrComponent, canActivate: [AuthGuard] },
-  { path: 'hr', component: HrComponent, canActivate: [AuthGuard] },
-  { path: 'config', component: ConfigComponent},
+  { path: 'hr', component: HrComponent, },
+  { 
+    path: 'config', 
+    component: ConfigComponent,
+    data: { 
+      expectedAdmin: 'admin'
+    } 
+  },
   {
     path: 'ipconfig/add/:id',
-    component: EditComponent
+    component: EditComponent,
+    data: { 
+      expectedAdmin: 'admin'
+    } 
     },
   {
   path: 'ipconfig/edit/:id',
-  component: EditComponent
+  component: EditComponent,
+  data: { 
+    expectedAdmin: 'admin'
+  } 
 },
 {
   path: 'ipconfig/edit/:id/:ipAddress',
-  component: EditComponent
+  component: EditComponent,
+  data: { 
+    expectedAdmin: 'admin'
+  } 
 },
 
   {

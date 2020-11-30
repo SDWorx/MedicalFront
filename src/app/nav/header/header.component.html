@@ -37,6 +37,7 @@
       <!-- ============================================================== -->
       <!-- Profile -->
       <!-- ============================================================== -->
+      <div *ngIf="type == 'admin'">
       <ul class="navbar-nav" style="margin-right: 15px;">
       <li class="nav-item">
         <a
@@ -46,14 +47,17 @@
           >Device IP</a
         >
       </li>
-      <li class="nav-item">
-          <a
+     
+        
+          <li class="nav-item">
+            <a
             class="nav-link"
-            [routerLink]="['claimForm']"
+            [routerLink]="['config']"
             [routerLinkActive]="['active']"
-            >Make Claim
-          </a>
+            >Config</a>
+          
         </li>
+
         <li class="nav-item">
           <a
             class="nav-link"
@@ -62,6 +66,16 @@
             >View Claim</a
           >
         </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['viewstatus']"
+            [routerLinkActive]="['active']"
+            >View Status</a
+          >
+        </li>
+
         <li class="nav-item">
           <a
             class="nav-link"
@@ -78,6 +92,30 @@
         </li>
       </ul>
     </div>
+        </div>
+
+      <div *ngIf="type == 'employee'">
+        <ul class="navbar-nav" style="margin-right: 15px;">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="['claimForm']"
+              [routerLinkActive]="['active']"
+              >Make Claim
+            </a>
+        </li>
+
+        <li>
+          <a class="nav-link" (click)="logout()">Logout </a>
+        </li>
+      </ul>
+      </div>
+
+        
+
+        
+        
+
   </nav>
 </header>
 <div
