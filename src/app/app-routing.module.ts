@@ -1,4 +1,6 @@
-import { Component, NgModule } from '@angular/core';
+import { DeviceipComponent } from './pages/deviceip/deviceip.component';
+
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
@@ -77,6 +79,11 @@ const routes: Routes = [
     expectedAdmin: 'admin'
   } 
 },
+
+  {
+    path: 'ip',
+    component: DeviceipComponent
+  }
 ];
 
 @NgModule({
