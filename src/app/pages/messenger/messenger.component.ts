@@ -48,7 +48,8 @@ export class MessengerComponent implements OnInit {
         this.MessengerService.createBatch().subscribe((data) => {
           Swal.fire('Number of Envelope sent').then((result) => {
             if (result.value) {
-              this.router.navigate(['/claimForm']);
+             // this.router.navigate(['/claimForm']);
+              this.router.navigate(['/viewClaim']);
             }
           });
         });
