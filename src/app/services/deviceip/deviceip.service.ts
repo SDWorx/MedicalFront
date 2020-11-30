@@ -3,6 +3,7 @@ import { HttpClient  } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { RegisteredDevice } from 'src/app/Model/RegisteredDevice';
+import { FetchIp } from 'src/app/Model/FetchIp';
 
 @Injectable({
   providedIn: 'root'

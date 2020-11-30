@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth/auth.service';
 import { StorageService } from './services/auth/storage/storage.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   title = 'medical';
 
   show: boolean = false;
+  http: any;
 
   constructor(
     location: Location,
@@ -24,12 +26,15 @@ export class AppComponent implements OnInit {
       this.show = location.path() != '' ? true : false;
     });
   }
-
+ 
+  
+  
   ngOnInit(): void {
     // Redirect user if cookie is valid
     if (this.authService.isAuthenticated() && window.location.pathname == '/') {
       const role = this.storageService.getCookie('role');
       this.router.navigate(['/']);
     }
+   
   }
 }
