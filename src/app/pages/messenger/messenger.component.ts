@@ -47,7 +47,7 @@ export class MessengerComponent implements OnInit {
       (data1)=> {
         this.MessengerService.createBatch().subscribe((data) => {
           if(this.details.collected !== this.details.claimed){
-            Swal.fire('Possible mismatch', 'error').then(() => {
+            Swal.fire('Possible mismatch','Envelopes number may not match', 'error').then(() => {
               this.router.navigate(['/viewClaim']);
             });
           } else{
