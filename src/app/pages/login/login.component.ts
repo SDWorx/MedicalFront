@@ -38,14 +38,21 @@ export class LoginComponent implements OnInit {
       (data) => {
         console.log(data);
         this.storageService.createCookie('id', data['id'], 1);
+        //sessionStorage.setItem('employeeId',data['id'] );
         this.storageService.createCookie('token', data['token'], 1);
         this._loading = false;
 
-        /////// Admin
-        this.authenticateUser("admin");
+        
+        if(pwd == "12345"){
+          
+          /////// Admin
+          this.authenticateUser("admin");
 
-        ////// Normal employee
-        //this.authenticateUser("employee");
+        } else{
+
+          ////// Normal employee
+          this.authenticateUser("employee");
+        }
         
       },
       (err) => {

@@ -46,11 +46,18 @@ export class MessengerComponent implements OnInit {
     this.MessengerService.addSummary(this.details.batchID, this.details.claimed, this.details.collected, this.details.status).subscribe(
       (data1)=> {
         this.MessengerService.createBatch().subscribe((data) => {
-          Swal.fire('Number of Envelope sent').then((result) => {
-            if (result.value) {
-              this.router.navigate(['/claimForm']);
-            }
-          });
+          if(this.details.collected !== this.details.claimed){
+            Swal.fire('Possible mismatch','Envelopes number may not match', 'error').then(() => {
+              this.router.navigate(['/viewClaim']);
+            });
+          } else{
+            Swal.fire('Registered details').then((result) => {
+              if (result.value) {
+                this.router.navigate(['/viewClaim']);
+              }
+            });
+          }
+          
         });
       }
     );
@@ -70,14 +77,5 @@ export class MessengerComponent implements OnInit {
   }
   employee() {
     this.router.navigate(['/claimForm']);
-  }
-
-  ChangeViewDateFormat(d: Date): any {
-    const d2: Date = new Date(d);
-    const dd = String(d2.getDate()).padStart(2, '0');
-    const mm = String(d2.getMonth() + 1).padStart(2, '0'); // January is 0!
-    const yyyy = d2.getFullYear();
-
-    return dd + '-' + mm + '-' + yyyy;
   }
 }

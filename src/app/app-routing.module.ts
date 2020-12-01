@@ -30,7 +30,8 @@ const routes: Routes = [
     component: ViewclaimComponent,
     canActivate: [AuthGuard],
     data: { 
-      expectedAdmin: 'admin'
+      expectedAdmin: 'admin',
+      expectedUser: 'employee'
     } 
   },
   {
