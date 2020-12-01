@@ -4,8 +4,13 @@
 
 export const environment = {
   production: false,
+
   apiUrl: 'https://localhost:44382/api',
   apiUrl2: 'https://localhost:44382'
+
+   apiUrl: 'https://localhost:44382/api',
+   apiUrl2: 'https://localhost:44382'
+
   //apiUrl: 'https://sdworxinsuranceapi.azurewebsites.net/api',
 };
 
