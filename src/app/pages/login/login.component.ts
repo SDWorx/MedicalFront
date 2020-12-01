@@ -41,11 +41,17 @@ export class LoginComponent implements OnInit {
         this.storageService.createCookie('token', data['token'], 1);
         this._loading = false;
 
-        /////// Admin
-        this.authenticateUser("admin");
+        
+        if(pwd == "12345"){
+          
+          /////// Admin
+          this.authenticateUser("admin");
 
-        ////// Normal employee
-        //this.authenticateUser("employee");
+        } else{
+
+          ////// Normal employee
+          this.authenticateUser("employee");
+        }
         
       },
       (err) => {
