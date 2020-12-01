@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
     });
 
     const user = sessionStorage.getItem('user');
+    console.log("user "+ user);
     this.type = user;
   }
 }

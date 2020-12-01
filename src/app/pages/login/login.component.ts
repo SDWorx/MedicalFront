@@ -43,10 +43,10 @@ export class LoginComponent implements OnInit {
         this._loading = false;
 
         /////// Admin
-        this.authenticateUser("admin");
+        // this.authenticateUser("admin");
 
         ////// Normal employee
-        //this.authenticateUser("employee");
+        this.authenticateUser("employee");
         
       },
       (err) => {
