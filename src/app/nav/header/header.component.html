@@ -37,29 +37,35 @@
       <!-- ============================================================== -->
       <!-- Profile -->
       <!-- ============================================================== -->
+      <div *ngIf="type == 'admin'">
       <ul class="navbar-nav" style="margin-right: 15px;">
       <li class="nav-item">
         <a
           class="nav-link"
           [routerLink]="['config']"
           [routerLinkActive]="['active']"
-          >Config</a
+          >Device IP</a
         >
       </li>
-      <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['claimForm']"
-            [routerLinkActive]="['active']"
-            >Make Claim
-          </a>
-        </li>
+
+          
+     
+
         <li class="nav-item">
           <a
             class="nav-link"
             [routerLink]="['viewClaim']"
             [routerLinkActive]="['active']"
             >View Claim</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['viewstatus']"
+            [routerLinkActive]="['active']"
+            >View Status</a
           >
         </li>
 
@@ -74,19 +80,46 @@
             Messenger
           </a>
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['viewstatus']"
-            [routerLinkActive]="['active']"
-            >View Status</a
-          >
-        </li>
         <li>
           <a class="nav-link" (click)="logout()">Logout </a>
         </li>
       </ul>
     </div>
+        </div>
+
+      <div *ngIf="type == 'employee'">
+        <ul class="navbar-nav" style="margin-right: 15px;">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="['claimForm']"
+              [routerLinkActive]="['active']"
+              >Make Claim
+            </a>
+        </li>
+        
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['viewClaim']"
+            [routerLinkActive]="['active']"
+            >View Claim</a
+          >
+        </li>
+        
+
+        <li>
+          <a class="nav-link" (click)="logout()">Logout </a>
+        </li>
+      </ul>
+      </div>
+
+        
+
+        
+        
+
   </nav>
 </header>
 <div

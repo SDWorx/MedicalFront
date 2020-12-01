@@ -62,6 +62,7 @@ import { EditComponent } from './pages/edit/edit.component';
 
     ConfigComponent,
     EditComponent
+   
 
   ],
   imports: [

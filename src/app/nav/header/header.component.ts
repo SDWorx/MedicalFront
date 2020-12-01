@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   route: string;
   paths: String[];
   pinInserted:any;
+  type: string;
 
   constructor(private router: Router,private location: Location, private authService: AuthService) {
     router.events.subscribe((val) => {
@@ -39,5 +40,8 @@ export class HeaderComponent implements OnInit {
     this.LoginForm = new FormGroup({
       pin: new FormControl(),
     });
+
+    const user = sessionStorage.getItem('user');
+    this.type = user;
   }
 }

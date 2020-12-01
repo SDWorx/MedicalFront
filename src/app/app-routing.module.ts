@@ -1,4 +1,6 @@
-import { Component, NgModule } from '@angular/core';
+import { DeviceipComponent } from './pages/deviceip/deviceip.component';
+
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
@@ -19,37 +21,70 @@ const routes: Routes = [
     path: 'claimForm',
     component: EmployeeComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedUser: 'employee'
+    } 
   },
   {
     path: 'viewClaim',
     component: ViewclaimComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedAdmin: 'admin',
+      expectedUser: 'employee'
+    } 
   },
   {
     path: 'viewstatus',
     component: ViewstatusComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedAdmin: 'admin'
+    } 
   },
   {
     path: 'messenger',
     component: MessengerComponent,
     canActivate: [AuthGuard],
+    data: { 
+      expectedAdmin: 'admin'
+    }  
   },
   // { path: 'hr', component: HrComponent, canActivate: [AuthGuard] },
-  { path: 'hr', component: HrComponent, canActivate: [AuthGuard] },
-  { path: 'config', component: ConfigComponent},
+  { path: 'hr', component: HrComponent, },
+  { 
+    path: 'config', 
+    component: ConfigComponent,
+    data: { 
+      expectedAdmin: 'admin'
+    } 
+  },
   {
     path: 'ipconfig/add/:id',
-    component: EditComponent
+    component: EditComponent,
+    data: { 
+      expectedAdmin: 'admin'
+    } 
     },
   {
   path: 'ipconfig/edit/:id',
-  component: EditComponent
+  component: EditComponent,
+  data: { 
+    expectedAdmin: 'admin'
+  } 
 },
 {
   path: 'ipconfig/edit/:id/:ipAddress',
-  component: EditComponent
+  component: EditComponent,
+  data: { 
+    expectedAdmin: 'admin'
+  } 
 },
+
+  {
+    path: 'ip',
+    component: DeviceipComponent
+  }
 ];
 
 @NgModule({

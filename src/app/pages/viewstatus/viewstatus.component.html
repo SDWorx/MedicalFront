@@ -133,7 +133,13 @@
                   Status
                 </th>
                 <td mat-cell *matCellDef="let row">
-                    {{ row.status }}
+                  <div *ngIf="row.status == 'Success'">
+                    <p style="color:green"> {{ row.status }}</p>
+                  </div>
+                  <div *ngIf="row.status == 'Mismatch'">
+                    <p style="color:red"> {{ row.status }}</p>
+                  </div>
+                    
                 </td>
               </ng-container>
 

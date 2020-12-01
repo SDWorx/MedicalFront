@@ -3,19 +3,22 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { UserData } from 'src/app/pages/viewclaim/viewclaim.component';
+import { StorageService } from 'src/app/services/auth/storage/storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private storageService: StorageService) {}
 
   getUsers(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/claims`);
   }
 
   getClaimByUserID(UserData): Observable<any>{
-    let empid = sessionStorage.getItem('employeeId')
+    //let empid = sessionStorage.getItem('employeeId');
+    let empid = this.storageService.getCookie('id');
     return this.http.post(`${environment.apiUrl2}/GetClaimsById?employeeId=${empid}`, {UserData});
   }
 
