@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       (data) => {
         console.log(data);
         this.storageService.createCookie('id', data['id'], 1);
+        //sessionStorage.setItem('employeeId',data['id'] );
         this.storageService.createCookie('token', data['token'], 1);
         this._loading = false;
 
