@@ -51,14 +51,14 @@
           
      
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a
             class="nav-link"
             [routerLink]="['viewClaim']"
             [routerLinkActive]="['active']"
             >View Claim</a
           >
-        </li>
+        </li> -->
 
         <li class="nav-item">
           <a
@@ -80,21 +80,23 @@
             Messenger
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a class="nav-link" (click)="logout()">Logout </a>
-        </li>
+        </li> -->
       </ul>
     </div>
         </div>
       <div>
         <ul class="navbar-nav" style="margin-right: 15px;"> <!--change in ad-->
           <li class="nav-item">
-            <a *ngIf="this.type === 'hr'"
+            <div *ngIf="deviceCanMakeClaim && type == 'employee'" >
+            <a 
               class="nav-link"
               [routerLink]="['claimForm']"
               [routerLinkActive]="['active']"
               >Make Claim
             </a>
+          </div>
         </li>
         
 

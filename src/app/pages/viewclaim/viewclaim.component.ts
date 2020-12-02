@@ -34,6 +34,7 @@ export class ViewclaimComponent implements OnInit {
   Alldata: Array<UserData>;
   lstemps: UserData[];
   type: string;
+  
 
   @ViewChild('TABLE') table: ElementRef;
 

@@ -17,11 +17,9 @@ export class DeviceIpService  {
     return this.http.get('http://api.ipify.org/?format=json');
   }
 
-  getRegisteredDevice(): Observable<RegisteredDevice[]>
-  {
-    //return this.http.get<RegisteredDevice[]>(`${environment.apiUrl}/GetRegisteredDevice`);
-
-    return this.http.get<RegisteredDevice[]>(`https://localhost:44382/api/GetRegisteredDevice`);
+  getRegisteredDevice(): Observable<any> {
+    console.log(`${environment.apiUrl2}/GetRegisteredDevice`);
+    return this.http.get(`${environment.apiUrl2}/GetRegisteredDevice`);
   }
 
 }

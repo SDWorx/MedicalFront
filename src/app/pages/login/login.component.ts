@@ -65,11 +65,10 @@ export class LoginComponent implements OnInit {
 
   authenticateUser(userName){
     sessionStorage.setItem("user", userName);
-    if(userName == "admin"){
+
       this.router.navigate(['/viewClaim']);
-    }
-    else if(userName == "employee"){ 
-      this.router.navigate(['/claimForm']);
-    }
+
   }
+
+
 }
