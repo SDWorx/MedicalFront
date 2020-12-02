@@ -38,11 +38,14 @@
               min="1"
               placeholder="Envelope received "
               required
+              (change)="checkData()"
             />
             <br />
+            
             <button mat-raised-button class="card" type="submit">
               Submit
             </button>
+            <div id="displayWarning"></div>
           </form>
         </div>
       </div>
