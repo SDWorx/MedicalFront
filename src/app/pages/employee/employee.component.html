@@ -40,9 +40,11 @@
               class="mat-elevation-z2"
               type="text"
               min="1"
-              placeholder="Employee ID"
+              [placeholder]="employeeID"
               required
               formControlName="emp_id"
+              [(ngModel)] = "employeeID"
+              readonly
             />
 
             <input
