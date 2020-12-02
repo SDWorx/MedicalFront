@@ -4,6 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { StorageService } from 'src/app/services/auth/storage/storage.service';
 import { forkJoin } from 'rxjs';
 
 // MDB Angular Free
@@ -18,12 +19,14 @@ export class EmployeeComponent implements OnInit {
   _error = false;
   _loading = false;
   _batch;
-
+  employeeID;
   isLoading:boolean = false;
 
-  constructor( private EmployeeService: EmployeeService, private router: Router) {}
+  constructor( private EmployeeService: EmployeeService, private router: Router, private storageService: StorageService) {}
 
   ngOnInit(): void {
+    this.employeeID = this.storageService.getCookie('id');
+
     this.claimForm = new FormGroup({
       emp_id: new FormControl(null, [Validators.required]),
       first_name: new FormControl(null, [Validators.required]),
@@ -121,6 +124,7 @@ export class EmployeeComponent implements OnInit {
 
   clearClaimForm(){
     this.claimForm.reset(); 
+    this.employeeID =  this.storageService.getCookie('id');
   }
 
   submitClaim() {
@@ -130,13 +134,13 @@ export class EmployeeComponent implements OnInit {
       const batch_id = data[0]['batch_id'];
       console.log(this._batch);
 
-      const id = this.claimForm.value.emp_id;
+      const id = this.employeeID;
       const first_name = this.claimForm.value.first_name;
       const last_name = this.claimForm.value.last_name;
       const noClaims = this.claimForm.value.number_of_claims;
       
 
-      sessionStorage.setItem('employeeId', id)
+      //sessionStorage.setItem('employeeId', id)
 
       this.EmployeeService.makeclaim(
         id,

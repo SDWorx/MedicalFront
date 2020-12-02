@@ -70,3 +70,11 @@ input[type="number"] {
   25%  { right: 0px; top: 0px;}
  
 }
+
+#displayWarning{
+  position: relative;
+  top: -6em;
+  left: 18em;
+  color: #dc3545;
+  font-weight: bold;
+}
