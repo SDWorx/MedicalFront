@@ -7,8 +7,23 @@ div.main {
   ); /* Chrome10+,Safari5.1+ */
   height: calc(86vh);
   width: 100%;
+  background-image: url('/assets/sdback.PNG');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
 }
 
+
+.mat-elevation-z2{
+
+   border-radius: 15px !important;
+}
+.mat-raised-button{
+  color: white;
+    background-color: #7c2855;
+    border-radius: 15px;
+}
 input {
   border: none;
   font-family: "Open Sans", Arial, sans-serif;
