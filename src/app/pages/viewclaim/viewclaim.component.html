@@ -14,7 +14,7 @@
           <h2
           style="color: BLACK; text-align: center; font-weight: 500;font-size:200%;"
         >
-          My CLAIMS
+          MY CLAIMS
         </h2>
         </div>
         <div class="loader" *ngIf="_loading">
@@ -26,9 +26,9 @@
     <button
     (click)="exporter.exportTable('csv')"
     style="
-      background-color: #787878;
-      float: center;
       color: white;
+      background-color: #7c2855;
+      float: center;
       margin:5px;
       width: 130px;
       text-align: center;
@@ -41,7 +41,7 @@
   <button
     (click)="openGenerateReportDialog()"
     style="
-      background-color: #787878;
+    background-color: #7c2855;
       float: center;
       color: white;
       margin:5px;
@@ -65,7 +65,7 @@
           />
         </mat-form-field>
   
-            <mat-checkbox
+            <mat-checkbox style="color:white"
               class="example-margin"
               (change)="handleCheckbox($event)"
               [(ngModel)]="checked"
