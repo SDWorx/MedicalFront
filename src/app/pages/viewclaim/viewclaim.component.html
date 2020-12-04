@@ -1,14 +1,19 @@
 <div class="main">
   <div class="container-fluid">
     <div class="row">
+
       <div class="col-12" style="margin-top: 2%;">
         <h2
           style="color: BLACK; text-align: center; font-weight: 500;font-family:verdana;font-size:200%;"
         >
           CLAIMS
         </h2>
+        <div class="loader" *ngIf="_loading">
+         
+         </div>
       </div>
     </div>
+   
     <button
     (click)="exporter.exportTable('csv')"
     style="
@@ -71,6 +76,7 @@
           >
             <br />
             <!-- ID Column -->
+
             <ng-container matColumnDef="emp_id">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Employee ID
@@ -86,19 +92,6 @@
                 {{ row.emp_name }}
               </td>
             </ng-container>
-
-            <!-- Name Column -->
-            <!-- <ng-container matColumnDef="emp_name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-            <td mat-cell *matCellDef="let row">Dev</td>
-          </ng-container>-->
-
-            <!--<ng-container matColumnDef="date_submit">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-              Date Submit
-            </th>
-            <td mat-cell *matCellDef="let row">22/05</td>
-          </ng-container>-->
 
             <ng-container matColumnDef="number_of_claims">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
