@@ -73,11 +73,14 @@ export class ViewstatusComponent implements OnInit {
 
 
   ngOnInit() {
+    this._loading=false;
     const firstTimeStatus = localStorage.getItem('key')
  if(!firstTimeStatus){
+  this._loading=true;
   localStorage.setItem('key','loaded')
   location.reload()
  }else {
+  this._loading=false;
    localStorage.removeItem('key') 
  }
     this.statusService.getStatus().subscribe(

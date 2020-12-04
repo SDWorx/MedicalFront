@@ -34,7 +34,7 @@ export class ViewclaimComponent implements OnInit {
   Alldata: Array<UserData>;
   lstemps: UserData[];
   type: string;
-  
+
 
   @ViewChild('TABLE') table: ElementRef;
 
@@ -65,13 +65,13 @@ export class ViewclaimComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private usersService: UsersService, public GenerateReportDialog:MatDialog,private router: Router ) {}
+  constructor(private usersService: UsersService, public GenerateReportDialog: MatDialog, private router: Router) { }
 
-  openGenerateReportDialog(){
-   let GenerateReportDialogRef = this.GenerateReportDialog.open(DialogGenerateReportDialogComponent);
-   GenerateReportDialogRef.afterClosed().subscribe(value => {
-     console.log("Generate Report Dialog closed");
-   });
+  openGenerateReportDialog() {
+    let GenerateReportDialogRef = this.GenerateReportDialog.open(DialogGenerateReportDialogComponent);
+    GenerateReportDialogRef.afterClosed().subscribe(value => {
+      console.log("Generate Report Dialog closed");
+    });
   }
 
   handleCheckbox(e) {
@@ -114,77 +114,80 @@ export class ViewclaimComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
   ngOnInit() {
+    this._loading = false;
     const firstTimeClaim = localStorage.getItem('key');
 
     const user = sessionStorage.getItem('user');
     this.type = user;
 
-    if(!firstTimeClaim){
-     localStorage.setItem('key','loaded')
-     location.reload()
-    }else {
-      localStorage.removeItem('key') 
+    if (!firstTimeClaim) {
+      this._loading = true;
+      localStorage.setItem('key', 'loaded')
+      location.reload()
+    } else {
+      this._loading = false;
+      localStorage.removeItem('key')
     }
 
-    if(this.type == "employee"){
-        this.usersService.getClaimByUserID(this.lstemps).subscribe(
+    if (this.type == "employee") {
+      this.usersService.getClaimByUserID(this.lstemps).subscribe(
 
-          (data: Array<UserData>) => {
-                this.Alldata = data;
-        
-                //this._loading=false;
-                //this.data = res;
-                this.allSubmissions = data;
-                this.dataSource = new MatTableDataSource(
-                  data.map((d) => {
-                    return {
-                      ...d,
-                      batch_date_to: d.batch_date_to
-                        ? this.ChangeViewDateFormat(new Date(d.batch_date_to))
-                        : 'pending',
-                    };
-                  })
-                );
-                console.log(data);
-        
-                //this.source = new LocalDataSource(this.data);
-                // setTimeout(() => {this._loading=false},2000)
-                this.dataSource.paginator = this.paginator;
-                this.dataSource.sort = this.sort;
-              },
-              (err) => console.log(err)
-            );
-        }
-      
-        if(this.type == "admin"){
-          this.usersService.getSpecificUser().subscribe(
+        (data: Array<UserData>) => {
+          this.Alldata = data;
 
-            (data: Array<UserData>) => {
-                  this.Alldata = data;
-          
-                  //this._loading=false;
-                  //this.data = res;
-                  this.allSubmissions = data;
-                  this.dataSource = new MatTableDataSource(
-                    data.map((d) => {
-                      return {
-                        ...d,
-                        batch_date_to: d.batch_date_to
-                          ? this.ChangeViewDateFormat(new Date(d.batch_date_to))
-                          : 'pending',
-                      };
-                    })
-                  );
-                  console.log(data);
-          
-                  //this.source = new LocalDataSource(this.data);
-                  // setTimeout(() => {this._loading=false},2000)
-                  this.dataSource.paginator = this.paginator;
-                  this.dataSource.sort = this.sort;
-                },
-                (err) => console.log(err)
-              );
-        }
+          //this._loading=false;
+          //this.data = res;
+          this.allSubmissions = data;
+          this.dataSource = new MatTableDataSource(
+            data.map((d) => {
+              return {
+                ...d,
+                batch_date_to: d.batch_date_to
+                  ? this.ChangeViewDateFormat(new Date(d.batch_date_to))
+                  : 'pending',
+              };
+            })
+          );
+          console.log(data);
+
+          //this.source = new LocalDataSource(this.data);
+          // setTimeout(() => {this._loading=false},2000)
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        (err) => console.log(err)
+      );
+    }
+
+    if (this.type == "admin") {
+      this.usersService.getSpecificUser().subscribe(
+
+        (data: Array<UserData>) => {
+          this.Alldata = data;
+
+          //this._loading=false;
+          //this.data = res;
+          this.allSubmissions = data;
+          this.dataSource = new MatTableDataSource(
+            data.map((d) => {
+              return {
+                ...d,
+                batch_date_to: d.batch_date_to
+                  ? this.ChangeViewDateFormat(new Date(d.batch_date_to))
+                  : 'pending',
+              };
+            })
+          );
+          console.log(data);
+
+          //this.source = new LocalDataSource(this.data);
+          // setTimeout(() => {this._loading=false},2000)
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        (err) => console.log(err)
+      );
+    }
 
 
   }
