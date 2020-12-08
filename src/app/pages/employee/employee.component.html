@@ -26,12 +26,17 @@
             ngNativeValidate
             (ngSubmit)="submitClaim()"
           >
-          <h2
-          style="color: BLACK; text-align: center; font-weight: 500;font-family:verdana;font-size:200%;padding-top: 5%;"
-         >
-           CLAIM FORM
-         </h2>
-         <h3 style="color: BLACK; text-align: center;"> Please fill in the claim form:</h3>
+            <h2
+              style="
+                color: black;
+                text-align: center;
+                font-weight: 500;
+                font-size: 200%;
+                padding-top: 5%;
+              "
+            >
+              CLAIM FORM
+            </h2>
             <input
               class="mat-elevation-z2"
               type="text"
@@ -75,13 +80,13 @@
 
             <button
               mat-raised-button
-              class="text-primary"
+              
               type="submit"
               style="margin-right: 2%;"
             >
               Submit
             </button>
-            <a mat-raised-button class="text-danger" (click)="how()">
+            <a mat-raised-button  (click)="how()">
               How to do?
             </a>
           </form>

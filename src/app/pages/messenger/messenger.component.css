@@ -1,12 +1,17 @@
 div.main {
-  background: -webkit-radial-gradient(
+  /* background: -webkit-radial-gradient(
     center,
     ellipse cover,
     #cac9c9c7 1%,
     #ffffff 100%
-  ); /* Chrome10+,Safari5.1+ */
+  ); Chrome10+,Safari5.1+ */
   height: calc(100vh);
   width: 100%;
+  background-image: url('/assets/sdback.PNG');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
 }
 
 input {
@@ -17,8 +22,6 @@ input {
   padding: 0;
   -webkit-appearance: none;
 }
-
-
 
 #emp form {
   width: 100%;
@@ -73,8 +76,20 @@ input[type="number"] {
 
 #displayWarning{
   position: relative;
-  top: -6em;
+  top: -8em;
   left: 18em;
-  color: #dc3545;
+  color: black;
   font-weight: bold;
+}
+.mat-elevation-z2{
+
+  border-radius: 15px !important;
+  margin-left: 12px;
+}
+.mat-raised-button{
+ color: white;
+   background-color: #7c2855;
+   border-radius: 15px;
+   
+
 }

@@ -1,0 +1,65 @@
+.mat-elevation-z8{
+    margin-left: 55px;
+    width: 91%;
+    justify-content: center;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  td,
+  th {
+    width: 15%;
+    padding: 15%;
+    text-align: center !important;
+  }
+  ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+  }
+  .label {
+    display: block;
+    font-weight: bold;
+    text-indent: 8px;
+    color: #656565;
+  }
+
+  .loader{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/assets/loading.gif') 
+                50% 50% no-repeat rgb(249,249,249);
+  }
+
+  .theButtons{
+    text-align: center;
+    padding-bottom: 1em;
+    position: relative;
+    top: -1em;
+    }
+
+    div.main {
+      /* background: -webkit-radial-gradient(
+        center,
+        ellipse cover,
+        #cac9c9c7 1%,
+        #ffffff 100%
+      ); */
+      height: 100vh;
+      width: 100%;
+      background-image: url('/assets/sdback.PNG');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    
+    }

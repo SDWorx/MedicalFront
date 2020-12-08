@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
     <h2
     style="color: BLACK; text-align: center; font-weight: 500;font-family:verdana;font-size:200%;"
    >
@@ -21,4 +21,64 @@
             </tr>
         </tbody>
     </table>
+</div> -->
+<div class="main">
+<h2
+    style="color: BLACK; text-align: center; font-weight: 500;font-size:200%; padding: 1em;"
+   >
+     LIST OF IP ADDRESSES
+   </h2>
+   <div class="theButtons">
+   <button style="
+   color: white;
+   background-color: #7c2855;
+   float: center;
+   margin:5px;
+   width: 130px;
+   text-align: center;"
+   (click)="changeRoute()" mat-raised-button>
+
+   <b>Add IP Address</b>
+</button>
+</div>
+
+    <div class="loader" *ngIf="_loading">
+         
+    </div>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSourceStatus" matSort matSortActive="id" matSortDirection="asc">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              ID
+            </th>
+            <td mat-cell *matCellDef="let row"> {{ row.id }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ipAddress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              IP Address
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.ipAddress }}
+            </td>
+          </ng-container>
+
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Edit/Delete
+        </th>
+        <td mat-cell *matCellDef="let row">
+             <a [routerLink]="['/ipconfig/edit',row.id,row.ipAddress]"><mat-icon>edit</mat-icon></a> 
+             <a (click)="onDelete(row.id)"><mat-icon>delete</mat-icon></a>
+            
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedStatusColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedStatusColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
 </div>
