@@ -4,7 +4,13 @@
       <div class="col-12">
         <div>
           <h2
-          style="color: BLACK; text-align: center; font-weight: 500;font-family:verdana;font-size:200%;"
+            style="
+              color: rgb(37, 33, 33);
+              text-align: center;
+              font-weight: 500;
+              font-size: 200%;
+                padding-top: 10%;
+            "
           >
            COLLECTING INSURANCE CLAIMS
           </h2>
@@ -27,18 +33,26 @@
             <br />
             <label style="padding-right: 10px;">Envelope Collected </label>
 
-            <input
+            <input style="margin-left: 22px;"
               class="mat-elevation-z2"
               type="number"
               formControlName="received"
               min="1"
               placeholder="Envelope received "
               required
+              (change)="checkData()"
             />
             <br />
-            <button mat-raised-button class="card" type="submit">
+            
+            <button style="    color: white;
+            background-color: #7c2855;
+            border-radius: 15px;
+            width: 200px;
+            margin-top: 25px;
+            align-items: center;" mat-raised-button class="card" type="submit">
               Submit
             </button>
+            <div id="displayWarning"></div>
           </form>
         </div>
       </div>

@@ -31,6 +31,18 @@ export class MessengerComponent implements OnInit {
   goback() {
     this.router.navigate(['/viewClaim']);
   }
+
+  checkData(){
+    this.details.collected = this.messengerForm.get('received').value;
+    let myContainer = document.getElementById('displayWarning') as HTMLInputElement;
+
+    if(this.details.collected == this.details.claimed){
+      myContainer.innerHTML ="";
+    }
+    else if(this.details.collected !== this.details.claimed){
+      myContainer.innerHTML ="Possible Mismatch";
+    }
+  }
   submit() {
     // Swal.fire('Envelope collected', 'New Batch initiate', 'success');
     // this.router.navigate(['/employee']);
@@ -46,17 +58,17 @@ export class MessengerComponent implements OnInit {
     this.MessengerService.addSummary(this.details.batchID, this.details.claimed, this.details.collected, this.details.status).subscribe(
       (data1)=> {
         this.MessengerService.createBatch().subscribe((data) => {
-          if(this.details.collected !== this.details.claimed){
-            Swal.fire('Possible mismatch','Envelopes number may not match', 'error').then(() => {
-              this.router.navigate(['/viewClaim']);
-            });
-          } else{
-            Swal.fire('Registered details').then((result) => {
+          // if(this.details.collected !== this.details.claimed){
+          //   Swal.fire('Possible mismatch','Envelopes number may not match', 'error').then(() => {
+          //     this.router.navigate(['/viewClaim']);
+          //   });
+          // } else{
+            Swal.fire('Registered details','Successfully added','success').then((result) => {
               if (result.value) {
                 this.router.navigate(['/viewClaim']);
               }
             });
-          }
+          //}
           
         });
       }

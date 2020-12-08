@@ -5,10 +5,25 @@ div.main {
     #cac9c9c7 1%,
     #ffffff 100%
   ); /* Chrome10+,Safari5.1+ */
-  height: calc(86vh);
+  height: 100%;
   width: 100%;
+  background-image: url('/assets/sdback.PNG');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
 }
 
+
+.mat-elevation-z2{
+
+   border-radius: 15px !important;
+}
+.mat-raised-button{
+  color: white;
+    background-color: #7c2855;
+    border-radius: 15px;
+}
 input {
   border: none;
   font-family: "Open Sans", Arial, sans-serif;
