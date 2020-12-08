@@ -1,13 +1,13 @@
-div.main {
+/* div.main {
   background: -webkit-radial-gradient(
     center,
     ellipse cover,
     #cac9c9c7 1%,
     #ffffff 100%
   ); /* Chrome10+,Safari5.1+ */
-  height: calc(100vh);
+ /* height: calc(100vh);
   width: 100%;
-}
+} */
 ::deep input {
   border: none;
   font-family: "Open Sans", Arial, sans-serif;
@@ -126,18 +126,13 @@ mat-checkbox{
 
 
 div.main {
-  background: -webkit-radial-gradient(
-    center,
-    ellipse cover,
-    #cac9c9c7 1%,
-    #ffffff 100%
-  ); /* Chrome10+,Safari5.1+ */
-  height: calc(86vh);
+  
+  height: 100vh;
   width: 100%;
   background-image: url('/assets/sdback.PNG');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: fixed;
 
 }
 

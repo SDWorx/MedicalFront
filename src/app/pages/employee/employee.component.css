@@ -5,7 +5,7 @@ div.main {
     #cac9c9c7 1%,
     #ffffff 100%
   ); /* Chrome10+,Safari5.1+ */
-  height: calc(86vh);
+  height: 100%;
   width: 100%;
   background-image: url('/assets/sdback.PNG');
   background-repeat: no-repeat;
