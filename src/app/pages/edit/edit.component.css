@@ -1,5 +1,23 @@
 #fetchID{
     position: relative;
-    top: -5.65em;
+    top: -4.45em;
     left: 10em;
+    color: white;
+    background-color: #7c2855;
+    float: center;
+    margin:5px;
+    width: 130px;
+}
+
+div.main {
+    height: 100vh;
+    width: 100%;
+    background-image: url('/assets/sdback.PNG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+.contain{
+    padding:5em;
 }

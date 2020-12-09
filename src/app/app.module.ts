@@ -44,6 +44,9 @@ import { DialogGenerateReportDialogComponent } from './pages/viewclaim/dialog-ge
 import { ViewstatusComponent } from './pages/viewstatus/viewstatus.component';
 
 import { EditComponent } from './pages/edit/edit.component';
+
+import { BnNgIdleService } from 'bn-ng-idle';
+
 //import { Config1 } from './pages/config1/config1.component.ts/config1.component.ts.component';
 //import { Config2Component } from './pages/config2/config2/config2.component';
 
@@ -93,7 +96,7 @@ import { EditComponent } from './pages/edit/edit.component';
     MatTableExporterModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [BnNgIdleService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
