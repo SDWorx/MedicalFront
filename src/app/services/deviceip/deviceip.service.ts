@@ -18,8 +18,8 @@ export class DeviceIpService  {
   }
 
   getRegisteredDevice(): Observable<any> {
-    console.log(`${environment.apiUrl2}/GetRegisteredDevice`);
-    return this.http.get(`${environment.apiUrl2}/GetRegisteredDevice`);
+    console.log(`${environment.url}/GetRegisteredDevice`);
+    return this.http.get(`${environment.url}/GetRegisteredDevice`);
   }
 
 }

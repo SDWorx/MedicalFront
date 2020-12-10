@@ -12,6 +12,6 @@ export class LoginService {
     const body = {
       password: pwd,
     };
-    return this.http.post(`${environment.apiUrl}/auth`, body);
+    return this.http.post(`${environment.url}/api/auth`, body);
   }
 }

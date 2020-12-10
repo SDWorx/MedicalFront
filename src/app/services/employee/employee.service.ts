@@ -27,10 +27,10 @@ export class EmployeeService {
 
     console.log(body);
 
-    return this.http.post(`${environment.apiUrl}/claims`, body);
+    return this.http.post(`${environment.url}/api/claims`, body);
   }
 
   getbatch(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/batches`);
+    return this.http.get(`${environment.url}/api/batches`);
   }
 }

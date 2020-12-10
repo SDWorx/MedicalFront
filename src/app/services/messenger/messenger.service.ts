@@ -17,11 +17,11 @@ export class MessengerService {
 
     console.log(body);
 
-    return this.http.post(`${environment.apiUrl}/batches`, body);
+    return this.http.post(`${environment.url}/api/batches`, body);
   }
 
   Count(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/count`);
+    return this.http.get<any>(`${environment.url}/api/count`);
   }
 
   addSummary(batchID: any, claimed: any, collected: any, status: string) : Observable <any>{
@@ -33,6 +33,6 @@ export class MessengerService {
       status: status
     }
     
-    return this.http.post(`${environment.apiUrl}/BatchClaimed`, body);
+    return this.http.post(`${environment.url}/api/BatchClaimed`, body);
   }
 }

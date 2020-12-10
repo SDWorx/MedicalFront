@@ -13,24 +13,24 @@ export class IpconfigService {
   constructor(private http: HttpClient) {}
 
   getRegisteredDevice(): Observable<any> {
-    return this.http.get(`${environment.apiUrl2}/GetRegisteredDevice`);
+    return this.http.get(`${environment.url}/GetRegisteredDevice`);
   }
 
   deleteRegisteredDevice(deviceId: Number) {
     return this.http.delete(
-      `${environment.apiUrl2}/DeleteRegisteredDevice?id=${deviceId}`
+      `${environment.url}/DeleteRegisteredDevice?id=${deviceId}`
     );
   }
 
   addRegisteredDevice(newIp: IpConfig) {
-    return this.http.post(`${environment.apiUrl2}/AddRegisteredDevice`, {
+    return this.http.post(`${environment.url}/AddRegisteredDevice`, {
       id: newIp.id,
       ipAddress: newIp.ipAddress,
     });
   }
 
   updateRegisteredDevice(ipconfig: IpConfig) {
-    return this.http.put(`${environment.apiUrl2}/UpdateRegisteredDevice`, {
+    return this.http.put(`${environment.url}/UpdateRegisteredDevice`, {
       id: ipconfig.id,
       ipAddress: ipconfig.ipAddress,
     });

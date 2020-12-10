@@ -74,6 +74,7 @@ export class ConfigComponent implements OnInit {
       });
 
     });
+    window.location.reload();
   }
 
   changeRoute(){
