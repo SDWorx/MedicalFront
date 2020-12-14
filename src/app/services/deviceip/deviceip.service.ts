@@ -23,7 +23,6 @@ export class DeviceIpService  {
     return this.http.get(`${environment.url}/GetRegisteredDevice`);
   }
 
-
   deleteRegisteredDevice(deviceId: Number) {
     return this.http.delete(
       `${environment.url}/DeleteRegisteredDevice?id=${deviceId}`
@@ -43,5 +42,4 @@ export class DeviceIpService  {
       ipAddress: ipconfig.ipAddress,
     });
   }
-
 }
