@@ -26,9 +26,9 @@
 <h2
     style="color: BLACK; text-align: center; font-weight: 500;font-size:200%; padding: 1em;"
    >
-     LIST OF IP ADDRESSES
+     Authorized IP Address
    </h2>
-   <div class="theButtons">
+   <!-- <div class="theButtons">
    <button style="
    color: white;
    background-color: #7c2855;
@@ -40,7 +40,7 @@
 
    <b>Add IP Address</b>
 </button>
-</div>
+</div> -->
 
     <div class="loader" *ngIf="_loading">
          
@@ -64,7 +64,7 @@
             </td>
           </ng-container>
 
-      <ng-container matColumnDef="data">
+      <!-- <ng-container matColumnDef="data">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Edit/Delete
         </th>
@@ -73,7 +73,7 @@
              <a (click)="onDelete(row.id)"><mat-icon>delete</mat-icon></a>
             
         </td>
-      </ng-container>
+      </ng-container> -->
   
       <tr mat-header-row *matHeaderRowDef="displayedStatusColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedStatusColumns;"></tr>
