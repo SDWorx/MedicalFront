@@ -10,6 +10,6 @@ export class StatusService {
   constructor(private http: HttpClient) {}
 
   getStatus(): Observable<any> {
-    return this.http.get(`${environment.url}/api/BatchClaimed`);
+    return this.http.get(`${environment.apiUrl}/api/BatchClaimed`);
   }
 }
