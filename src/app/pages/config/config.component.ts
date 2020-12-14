@@ -3,6 +3,7 @@ import { IpConfig } from 'src/app/models/ipconfig.model';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { IpconfigService } from 'src/app/services/ipconfig.service';
+import { DeviceIpService } from 'src/app/services/deviceip/deviceip.service';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 
@@ -22,16 +23,17 @@ export class ConfigComponent implements OnInit {
   displayedStatusColumns: string[] = [
     'id',
     'ipAddress',
-    'data'
+    //'data'
   ];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   
   ipconfiguration: IpConfig[];
-  constructor(private ipconfigservice: IpconfigService, private router: Router){}
+  constructor(private ipconfigservice: IpconfigService, private router: Router, private ipdevice: DeviceIpService){}
 
-  ngOnInit():void{
+  async ngOnInit():Promise<void>{
+    
     this._loading=false;
     const firstTimeStatus = localStorage.getItem('key')
  if(!firstTimeStatus){
@@ -43,7 +45,7 @@ export class ConfigComponent implements OnInit {
    localStorage.removeItem('key') 
  }
 
-    this.ipconfigservice.getRegisteredDevice().subscribe((dataStatus:Array<IpConfig>) => {
+    await this.ipconfigservice.getRegisteredDevice().subscribe((dataStatus:Array<IpConfig>) => {
       this.AlldataStatus = dataStatus;
 
       this.ipconfiguration = dataStatus;
@@ -64,17 +66,17 @@ export class ConfigComponent implements OnInit {
     })
   }
 
-  onDelete(id: Number)
+  async onDelete(id: Number)
   {
     console.log(id);
-    this.ipconfigservice.deleteRegisteredDevice(id).subscribe((data)=>{
-      this.ipconfigservice.getRegisteredDevice().subscribe((data) =>
+    this.ipdevice.deleteRegisteredDevice(id).subscribe(async (data)=>{
+      await this.ipdevice.getRegisteredDevice().subscribe((data) =>
       {
         this.ipconfiguration = data;
+        this._loading=true;
+        window.location.reload();
       });
-
     });
-    window.location.reload();
   }
 
   changeRoute(){
