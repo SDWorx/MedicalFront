@@ -6,7 +6,9 @@
 
   table {
     width: 100%;
-  }
+      /* overflow-x: scroll; */
+    }
+  
 
   .mat-form-field {
     font-size: 14px;

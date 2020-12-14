@@ -33,4 +33,5 @@ export class EmployeeService {
   getbatch(): Observable<any> {
     return this.http.get(`${environment.url}/api/batches`);
   }
+
 }

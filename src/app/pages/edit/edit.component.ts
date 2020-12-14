@@ -38,6 +38,11 @@ export class EditComponent implements OnInit {
     }
   }
 
+//   onDelete(id:number){
+// this.ipconfigservice.onDelete(id);
+
+//   }
+
   onSubmit() {
     let ipconfig: IpConfig = {
       id: this.id,

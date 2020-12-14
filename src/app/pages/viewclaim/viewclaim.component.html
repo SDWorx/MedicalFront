@@ -73,7 +73,7 @@
             >
 
         <br />
-        <div class="mat-elevation-z8">
+        <div class="mat-elevation-z8" >
           <table
             mat-table
             [dataSource]="dataSource"
@@ -82,6 +82,7 @@
             matSortDirection="desc"
             matTableExporter
             #exporter="matTableExporter"
+            
           >
             <br />
             <!-- ID Column -->
@@ -142,6 +143,7 @@
               </td>
             </ng-container>
 
+            
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
