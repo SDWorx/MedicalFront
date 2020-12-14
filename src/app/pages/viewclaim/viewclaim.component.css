@@ -67,7 +67,7 @@ input[type="password"] {
 }
 
 ::-webkit-scrollbar {
-  width: 1px !important;
+  width: 5px !important;
 }
 
 .mat-elevation-z8{
@@ -163,3 +163,4 @@ div.main {
   border-color: white;
   background-color: #dddddd
 }
+

@@ -30,6 +30,7 @@
               </div>
 
               <!--Body-->
+              <div style="height: 450px !important; overflow: auto; background-color: white;">
               <div class="modal-body">
                 <mat-table [dataSource]="dataSource" matSort>
 
@@ -54,12 +55,12 @@
                     <mat-cell *matCellDef="let row"> {{ ChangeViewDateFormat(row.date_submit) }} </mat-cell>
                   </ng-container>
 
-                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
                   <mat-row *matRowDef="let row; columns: displayedColumns;">
                   </mat-row>
                 </mat-table>
               </div>
-
+            </div>
               <!--Footer-->
               <div class="modal-footer justify-content-center">
                 <a type="button" mdbBtn color="danger" outline="true" class="waves-light" mdbWavesEffect
@@ -133,7 +134,7 @@
               </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedStatusColumns"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedStatusColumns; sticky:true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedStatusColumns"></tr>
             <tr class="mat-row" *matNoDataRow>
               <td class="mat-cell" colspan="4">
@@ -141,7 +142,7 @@
               </td>
             </tr>
           </table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
         </div>
       </div>
 
