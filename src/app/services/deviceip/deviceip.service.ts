@@ -19,25 +19,25 @@ export class DeviceIpService  {
   }
 
   getRegisteredDevice(): Observable<any> {
-    console.log(`${environment.url}/GetRegisteredDevice`);
-    return this.http.get(`${environment.url}/GetRegisteredDevice`);
+    console.log(`${environment.apiUrl}/GetRegisteredDevice`);
+    return this.http.get(`${environment.apiUrl}/GetRegisteredDevice`);
   }
 
   deleteRegisteredDevice(deviceId: Number) {
     return this.http.delete(
-      `${environment.url}/DeleteRegisteredDevice?id=${deviceId}`
+      `${environment.apiUrl}/DeleteRegisteredDevice?id=${deviceId}`
     );
   }
 
   addRegisteredDevice(newIp: IpConfig) {
-    return this.http.post(`${environment.url}/AddRegisteredDevice`, {
+    return this.http.post(`${environment.apiUrl}/AddRegisteredDevice`, {
       id: newIp.id,
       ipAddress: newIp.ipAddress,
     });
   }
 
   updateRegisteredDevice(ipconfig: IpConfig) {
-    return this.http.put(`${environment.url}/UpdateRegisteredDevice`, {
+    return this.http.put(`${environment.apiUrl}/UpdateRegisteredDevice`, {
       id: ipconfig.id,
       ipAddress: ipconfig.ipAddress,
     });

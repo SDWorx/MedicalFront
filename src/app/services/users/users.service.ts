@@ -13,22 +13,22 @@ export class UsersService {
     private storageService: StorageService) {}
 
   getUsers(): Observable<any> {
-    return this.http.get(`${environment.url}/api/claims`);
+    return this.http.get(`${environment.apiUrl}/api/claims`);
   }
 
   getClaimByUserID(UserData): Observable<any>{
     //let empid = sessionStorage.getItem('employeeId');
     let empid = this.storageService.getCookie('id');
-    return this.http.post(`${environment.url}/GetClaimsById?employeeId=${empid}`, {UserData});
+    return this.http.post(`${environment.apiUrl}/GetClaimsById?employeeId=${empid}`, {UserData});
   }
 
   getSpecificUser(): Observable<any> {
     let param = new HttpParams().set('claim_id', "10");
-    return this.http.get(`${environment.url}/api/Claims`,{params: param})
+    return this.http.get(`${environment.apiUrl}/api/Claims`,{params: param})
   }
 
   getStats(dateFrom, dateTo) {
-    let url = `${environment.url}/api/range?dateFrom=${dateFrom}&dateTo=${dateTo}`;
+    let url = `${environment.apiUrl}/api/range?dateFrom=${dateFrom}&dateTo=${dateTo}`;
     console.log(dateFrom, dateTo, url);
     return this.http.get(url);
   }
